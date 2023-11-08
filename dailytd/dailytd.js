@@ -3,6 +3,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const taskList = document.getElementById('taskList');
     const taskInput = document.getElementById('task');
     const addTaskButton = document.getElementById('addTask');
+    const cookieBanner = document.getElementById('cookieBanner');
+    const acceptCookiesBtn = document.getElementById('acceptCookiesBtn');
+
+     // Check if the user has already accepted cookies
+     if (localStorage.getItem('cookiesAccepted') === 'true') {
+        cookieBanner.style.display = 'none';
+    }
+
+    acceptCookiesBtn.addEventListener('click', () => {
+        // Set a localStorage flag to indicate that the user has accepted cookies
+        localStorage.setItem('cookiesAccepted', 'true');
+        cookieBanner.style.display = 'none';
+    });
+    
+    // Function to load tasks from local storage
+    const loadTasks = () => {
+        const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+        savedTasks.forEach(taskText => {
+            const listItem = createTaskItem(taskText);
+            taskList.appendChild(listItem);
+        });
+    };
 
     const createTaskItem = (taskText) => {
         const listItem = document.createElement('li');
@@ -40,21 +62,27 @@ document.addEventListener('DOMContentLoaded', () => {
         return listItem;
     };
 
+    // Load tasks from local storage during page load
+    loadTasks();
+
+    const saveTasksToLocalStorage = () => {
+        const tasks = Array.from(taskList.children).map(item => item.querySelector('input[type="text"]').value);
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+    };
+
     const addTask = () => {
         const taskText = taskInput.value.trim();
-        // const taskTime = timeInput;
-        // const selectedHour = hourSelect.value;
-        // const selectedMinute = minuteSelect.value;
-        // const selectedAMPM = ampmSelect.value;
         if (taskText === '') {
             return;
         }
 
-    
         const listItem = createTaskItem(taskText);
         taskList.appendChild(listItem);
         taskInput.value = '';
-        
+
+        // Save tasks to local storage whenever a new task is added
+        saveTasksToLocalStorage();
+
         // Event listener for checkbox change
         const checkbox = listItem.querySelector('input[type="checkbox"]');
         checkbox.addEventListener('change', () => {
@@ -66,13 +94,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
+
     addTaskButton.addEventListener('click', addTask);
     taskInput.addEventListener('keyup', (event) => {
         if (event.key === 'Enter') {
             addTask();
         }
     });
-    
+
     taskList.addEventListener('click', (event) => {
         const { target } = event;
         const listItem = target.closest('.list-group-item');
@@ -93,6 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (target.classList.contains('delete-btn')) {
             listItem.remove();
         }
+        saveTasksToLocalStorage();
     });
     
 });
