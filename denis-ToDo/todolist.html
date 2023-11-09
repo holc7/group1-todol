@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Group4 To DO List</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <!-- Favicon icon -->
+  <link rel="icon" type="image/png" sizes="16x16" href="./dist/images/logo.png" />
+
+  <!-- Common style CSS -->
+  <link href="./dist/css/style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./assets/libs/prism/prism.css">
+  <link rel="stylesheet" href="todolist.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+</head>
+<body>
+
+  <div class="container min-vh-70 mt-5 d-flex align-items-center justify-content-center">
+    <div class="row col-10 col-md-8 col-lg-8 justify-content-center">
+        <div class="col">
+            <div class="card overflow-hidden shadow-out">
+                <div class="card-body">
+                  <div class="three-items-container justify-content-between d-flex align-items-center mb-3">
+                    <button type="button" class="btn-neuro">
+                      <i class="fas fa-home"></i> 
+                    </button>
+                    <h3 class="fw-normal me-3"><i class="fas fa-tasks"></i> TO DO LIST</h3>
+                    <button type="button" class="btn-neuro-c">0
+                      <span class="visually-hidden">items to add</span>
+                  </div>
+                      
+                  <div class="search-add d-flex justify-content-center">
+                    <input type="text" id="search-field" placeholder="Need a perfect steak? 🥩 Then you know who to call! His name is D...." name="name">
+                    <button type="button" class="calendar-icon" aria-label="Choose date">
+                        <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                    </button>
+                    <button type="button" class="add" aria-label="Add"><i class="fas fa-plus" aria-hidden="true"></i></button>
+                </div>
+            
+                    <ul class="to-do-container mt-3">
+                      <div id="lottie-task-animation" class="lottie-animatior"></div>
+                      <!-- <li class="to-do-list-item d-flex justify-content-around align-items-center p-3 mt-4">
+                        <p class="mb-0 w-75 ">MAKE A TO DO APP</p> 
+                        <div class="to-do-confirm mx-4">
+                          <button class="confirm"><i class="fas fa-check"></i></button>
+                        </div>
+                        <div class="to-do-delete">
+                          <button class="delete"><i class="fas fa-trash"></i></button>
+                        </div>
+                      </li> -->
+                    </ul>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+                  <div class="cont">
+                    <div class="col-md-6 col-lg-4">
+                      <div class="toast bg-primary shadow-inset text-dark fade show" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="toast-header text-dark">
+                          <span class="fas fa-fire"></span>
+                          <strong class="mr-auto ml-2">Proudly created by:</strong>
+                        </div>
+                        <div class="toast-body">DENIS</div>
+                      </div>
+                    </div>
+                  </div>  
+
+
+<div class="b-example-divider"></div>
+
+
+
+                    <div class="profile-card d-flex justify-content-center mb-5">
+                      <div class="card-profile  bg-primary shadow-inset border-light text-center">
+                          <div class="card-header">
+                              <div class="profile-image bg-primary shadow-inset border border-light rounded mx-auto p-3 mt-n6">
+                                  <img src="./Screenshot 2023-11-09 162949.png" class="card-img-top rounded" alt="Leos Portrait">
+                              </div>
+                          </div>
+                          <div class="card-body-profile  pb-5">
+                              <h3 class="h5 mb-2">Denis Holc</h3>
+                              <span class="h6 font-weight-normal text-gray mb-3">ALUMNI</span>
+                              <ul class="list-unstyled d-flex justify-content-center mt-3 mb-4">
+                                  <li>
+                                      <a href="#" target="_blank" aria-label="facebook social link" class="icon icon-xs icon-facebook mr-3">
+                                          <span class="fab fa-facebook-f"></span>
+                                      </a>
+                                  </li>
+                                  <li>
+                                      <a href="#" target="_blank" aria-label="dribbble social link" class="icon icon-xs icon-dribbble mr-3">
+                                          <span class="fab fab fa-github"></span>
+                                      </a>
+                                  </li>
+                              </ul>    
+                              <button class="contact-button">CONTACT</button>               
+                          </div>
+                      </div>
+                        </div>
+                      </div>  
+                    </div>  
+
+                  
+
+<div class="modal fade" id="solutionModal9" tabindex="-1" aria-labelledby="solutionModal9Label" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="solutionModal9Label">Not so fast Patricia!</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="anim-container d-flex align-items-center"> 
+            <div class="modal-body">
+                Somehow you forgot to type something. Try again!
+          </div>
+            <div id="lottie"></div>
+          </div>  
+          <div class="modal-footer">
+              <button type="button" class="btn-modal-close btn-danger" data-bs-dismiss="modal">Close</button>
+          </div>
+      </div>
+  </div>
+</div>
+<div id="lottie-task-animation" class="lottie-animation"></div>
+
+
+
+
+  <script src="./dist/js/jquery.js"></script>
+  <script src="./assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="./dist/js/custom.js"></script>
+  <script src="./assets/libs/prism/prism.js"></script>
+  <script src="todolist.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.6/lottie.min.js"></script>
+
+</body>
+
+</html>
