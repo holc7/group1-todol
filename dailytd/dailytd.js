@@ -12,12 +12,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     acceptCookiesBtn.addEventListener('click', () => {
-        // Set a localStorage flag to indicate that the user has accepted cookies
+        // localStorage flag to indicate that the user has accepted cookies
         localStorage.setItem('cookiesAccepted', 'true');
         cookieBanner.style.display = 'none';
     });
     
-    // Function to load tasks from local storage
+    // load tasks from local storage
     const loadTasks = () => {
         const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
         savedTasks.forEach(taskText => {
@@ -25,10 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
             taskList.appendChild(listItem);
         });
     };
-
+    //create new tasks in the list
     const createTaskItem = (taskText) => {
         const listItem = document.createElement('li');
-        listItem.className = 'list-group-item d-flex justify-content-around align-items-center';
+        listItem.className = 'list-group-item d-flex justify-content-around align-items-center container-fluid';
         
         const timeInput = document.createElement('input');
         timeInput.type = 'time';
