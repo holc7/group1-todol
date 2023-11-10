@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Forge - Daily Planner</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../style.css">
+    <script src="https://kit.fontawesome.com/6ff6a1c5ef.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="bg-dark text-white">
+    <div class="container py-5">
+        <h1 class="text-center my-5 neon-text fs-1" id="dailyTDBanner">Task <strong class="text-warning fs-1">F</strong>orge</h1>
+        <div class="input-group my-5 animate-on-load" id="inputGroup">
+            <input type="text" class="form-control" id="task" placeholder="Add a new task...">
+            <button class="btn btn-warning neon-text fs-4" type="button" id="addTask"><strong>+</strong></button>
+        </div>
+        <ul class="list-group" id="taskList"></ul>
+    </div>
+
+    <div id="cookieBanner" class="fs-6 cookie-banner alert alert-dismissible fade show position-absolute bottom-0 start-50 translate-middle" role="alert">
+        This website uses cookies to make sure that your tasks are saved locally.
+        <button type="button" class="btn btn-primary btn-sm p-2" id="acceptCookiesBtn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cookie" viewBox="0 0 16 16">
+                <path d="M6 7.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm4.5.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm-.5 3.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"/>
+                <path d="M8 0a7.963 7.963 0 0 0-4.075 1.114c-.162.067-.31.162-.437.28A8 8 0 1 0 8 0Zm3.25 14.201a1.5 1.5 0 0 0-2.13.71A7.014 7.014 0 0 1 8 15a6.967 6.967 0 0 1-3.845-1.15 1.5 1.5 0 1 0-2.005-2.005A6.967 6.967 0 0 1 1 8c0-1.953.8-3.719 2.09-4.989a1.5 1.5 0 1 0 2.469-1.574A6.985 6.985 0 0 1 8 1c1.42 0 2.742.423 3.845 1.15a1.5 1.5 0 1 0 2.005 2.005A6.967 6.967 0 0 1 15 8c0 .596-.074 1.174-.214 1.727a1.5 1.5 0 1 0-1.025 2.25 7.033 7.033 0 0 1-2.51 2.224Z"/>
+              </svg> Accept Cookies 
+        </button>
+        <button type="button" class="btn btn-secondary btn-sm p-2" data-bs-dismiss="alert" aria-label="Close">
+            Dismiss
+        </button>
+    </div>
+    
+    <script src="./dailytd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+</body>
+
+</html>

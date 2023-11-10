@@ -33,20 +33,78 @@
 
 
 
+
+
+
+
+
+
+
+
 /* AADIL STYLE */
 
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@200;300;400;500;600;700;800;900&family=Nosifer&family=Permanent+Marker&family=Sedgwick+Ave+Display&family=Shadows+Into+Light&display=swap');
 
 
+#dailyTDBanner {
+    font-family: 'Exo' 'Segoe UI', Verdana, sans-serif;
+    text-shadow: 0 0 2px #fff, 0 0 2px #fff, 0 0 2px #fff;
+    letter-spacing: 2rem;
+    font-weight: 200;
+}
 
+.list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.35);
+    border: none;
+    margin: 0.1rem;
+    font-family: 'Exo' 'Segoe UI', Verdana, sans-serif;
+    animation: taskAnim 0.5s cubic-bezier(0.68, 0, 0.40, 1.2) 0s 1 normal forwards;
+}
 
+@keyframes taskAnim {
+	0% {
+		transform: scale(0.3);
+	}
 
+	100% {
+		transform: scale(1);
+	}
+}
 
+.delete-btn,
+.edit-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: rgb(0, 150, 255);
+    font-size: 1.2rem;
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+}
+
+.delete-btn:hover,
+.edit-btn:hover {
+    transform: scale(1.17);
+}
+
+.list-group-item input[type="text"] {
+    background: transparent;
+    border: none;
+    color: #fff;
+    width: 80%;
+}
+
+.list-group-item input[type="text"]:focus {
+    outline: none;
+}
+
+.completed input[type="text"] {
+    text-decoration: line-through;
+}
 /* AADIL STYLE */
-
-
-
-
-
 
 
 /* DENIS STYLE */
