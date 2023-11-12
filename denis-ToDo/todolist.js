@@ -96,7 +96,14 @@ document.addEventListener('DOMContentLoaded', function() {
       newTask.classList.add("open");
       updateTaskCount();
     }
+    
   });
+
+  searchField.addEventListener("keypress", (event) => {
+    if (event.key === "Enter") {
+      addButton.click()
+    }
+  })
 
   tasksContainer.addEventListener("click", (event) => {
     if (event.target.matches(".delete")) {
@@ -220,6 +227,7 @@ loadTasksFromLocalStorage(); // Populate tasksList from local storage
 
   // Initialize the task count and Lottie visibility
   updateTaskCount();
+  
 
 });
 
