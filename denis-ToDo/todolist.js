@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
   function addTask(title) {
     const newTask = { title: title };
     tasksList.push(newTask);
-    addTaskElementToDOM(newTask.title); // Add the new task to DOM
+    addTaskElementToDOM(newTask.title, tasksList.length -1); // Add the new task to DOM
     saveTasksToLocalStorage();
     updateTaskCount();
   }
