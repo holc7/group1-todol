@@ -17,29 +17,36 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Function to render tasks
   function renderTasks() {
-    tasksContainer.innerHTML = ''; // Clear the tasks container
-    tasksList.forEach(taskObject => {
-      addTaskElementToDOM(taskObject.title); // Add each task to DOM
+    tasksContainer.innerHTML = '';
+    tasksList.forEach((taskObject, index) => {
+      addTaskElementToDOM(taskObject.title, index);
     });
-    updateTaskCount(); // Update task count and Lottie visibility
+    updateTaskCount();
   }
 
   // Function to create and add a task element to the DOM
-  function addTaskElementToDOM(task) {
+  function addTaskElementToDOM(task, index) {
     const taskElement = document.createElement("li");
     taskElement.className = 'to-do-list-item d-flex justify-content-around align-items-center';
     taskElement.innerHTML = `
-      <p class="mb-0 w-75">${task}</p>
+      <p class="mb-0 w-75 task-text" contenteditable="true">${task}</p>
       <div class="to-do-confirm mx-4">
         <button class="confirm"><i class="fas fa-check"></i></button>
       </div>
       <div class="to-do-delete">
         <button class="delete"><i class="fas fa-trash"></i></button>
       </div>`;
-    tasksContainer.appendChild(taskElement); // Append task element to container
+    tasksContainer.appendChild(taskElement);
     setTimeout(() => {
       taskElement.classList.add("open");
     }, 0);
+  
+    // Add event listener for blur event on task text
+    const taskText = taskElement.querySelector('.task-text');
+    taskText.addEventListener('blur', () => {
+      tasksList[index].title = taskText.textContent; // Update task title in tasksList array
+      saveTasksToLocalStorage(); // Save updated tasksList to local storage
+    });
   }
 
   // Function to add a new task to the list

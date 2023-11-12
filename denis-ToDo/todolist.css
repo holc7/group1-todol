@@ -241,6 +241,7 @@
     border-radius: 6px;
     transition: all 0.4s ease-in-out;
     padding: 0.5rem 0.8rem;
+    background-color: #007BFE;
     
 }
 
@@ -253,7 +254,7 @@
   .btn-neuro-c {
     border: 1px solid #d1d9e6;
     border-radius: 6px;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 1.1rem;
     background: #eceef3; 
    
     box-shadow: inset 6px 6px 10px #b8b9be, inset -6px -6px 10px #fff;
@@ -448,6 +449,10 @@
 
 .list-unstyled {
   gap: 20px;
+}
+
+.card-img-top {
+  height: 130px;
 }
 
 .contact-button {
