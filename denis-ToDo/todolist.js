@@ -6,7 +6,53 @@ document.addEventListener('DOMContentLoaded', function() {
   const badgeCounter = document.querySelector(".btn-neuro-c");
   const lottieAnimation = document.getElementById('lottie-task-animation');
 
+
   let modalLottieInstance = null; // Define a variable to hold the modal lottie instance
+
+
+  let tasksList = []
+
+  // Function to add a new task
+  function saveTasksToLocalStorage() {
+    localStorage.setItem('tasks', JSON.stringify(tasksList));
+    updateTaskCount(); // Update count after saving
+  }
+
+
+  function renderTasks() {
+ 
+
+    tasksContainer.innerHTML = ''; 
+    tasksList.forEach(taskObject => {
+      addTaskElementToDOM(taskObject.title);
+    });
+    updateTaskCount(); 
+  }
+  function addTaskElementToDOM(task) {
+
+
+    const taskElement = document.createElement("li");
+    taskElement.className = 'to-do-list-item open d-flex justify-content-around align-items-center';
+    taskElement.innerHTML = `
+      <p class="mb-0 w-75">${task}</p>
+      <div class="to-do-confirm mx-4">
+        <button class="confirm"><i class="fas fa-check"></i></button>
+      </div>
+      <div class="to-do-delete">
+        <button class="delete"><i class="fas fa-trash"></i></button>
+      </div>`;
+    tasksContainer.appendChild(taskElement);
+
+  
+    
+  
+  }
+
+  function addTask(title) {
+    tasksList.push({ title: title });
+    saveTasksToLocalStorage();
+    renderTasks();
+  }
 
   // Function to update the visibility of the Lottie animation
   function updateLottieVisibility() {
@@ -28,6 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (taskValue === "") {
       modal.show();
     } else {
+      
       const newTask = document.createElement("li");
       newTask.className = 'to-do-list-item d-flex justify-content-around align-items-center';
       newTask.innerHTML = `
@@ -40,6 +87,9 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>`;
       tasksContainer.appendChild(newTask);
       searchField.value = "";
+ 
+      addTask(taskValue); // this will double the task so delete later
+    
 
       void newTask.offsetWidth;
   
@@ -47,6 +97,44 @@ document.addEventListener('DOMContentLoaded', function() {
       updateTaskCount();
     }
   });
+
+  tasksContainer.addEventListener("click", (event) => {
+    if (event.target.matches(".delete")) {
+      const taskItem = event.target.closest(".to-do-list-item");
+      const taskIndex = tasksList.findIndex(task => task.title === taskItem.querySelector("p").textContent);
+      if (taskIndex > -1) {
+        tasksList.splice(taskIndex, 1);
+        saveTasksToLocalStorage(); // Save after deletion
+      }
+    } else if (event.target.matches(".confirm")) {
+      event.target.closest(".to-do-list-item").classList.toggle("task-completed");
+      // If you want to save the "completed" state to localStorage, you need to adjust the tasksList and save here.
+    }
+  });
+
+  // Event listener for the "Get tasks" button
+  addButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  loadTasksFromLocalStorage(); // Load tasks from local storage
+  
+});
+
+// Function to save tasks to local storage
+function saveTasksToLocalStorage() {
+  localStorage.setItem('tasks', JSON.stringify(tasksList));
+}
+
+// Function to retrieve tasks from local storage
+function loadTasksFromLocalStorage() {
+  const storedTasks = localStorage.getItem('tasks');
+  if (storedTasks) {
+      tasksList = JSON.parse(storedTasks); // Reassign the 'tasksList' variable here
+      renderTasks();
+      
+  }
+}
+loadTasksFromLocalStorage(); // Populate tasksList from local storage
+
 
   // Listen for the modal being opened to manage the lottie animation
   document.getElementById('solutionModal9').addEventListener('show.bs.modal', function () {
@@ -72,16 +160,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // Handler for task item actions (confirm/delete)
-  tasksContainer.addEventListener("click", (event) => {
-    if (event.target.closest(".delete")) {
-      const taskToDelete = event.target.closest("li");
-      taskToDelete.classList.add("closing")
-      taskToDelete.addEventListener('animationend', function() {
-        tasksContainer.removeChild(taskToDelete);
-        updateTaskCount();
-      });
-    }
-  });
+
 
   tasksContainer.addEventListener("click", (event) => {
     if (event.target.closest(".confirm")) {
@@ -91,6 +170,44 @@ document.addEventListener('DOMContentLoaded', function() {
       updateTaskCount();
     }
   })
+
+
+  tasksContainer.addEventListener("click", (event) => {
+    if (event.target.closest(".delete")) {
+      const taskToDelete = event.target.closest("li");
+      taskToDelete.classList.add("closing")
+      taskToDelete.addEventListener('animationend', function() {
+        tasksContainer.removeChild(taskToDelete);
+        saveTasksToLocalStorage();
+        updateTaskCount();
+        
+      });
+    }
+
+
+    tasksContainer.addEventListener("click", (event) => {
+      const element = event.target;
+      if (element.classList.contains("delete")) {
+        const taskItem = element.closest(".to-do-list-item");
+        const taskIndex = tasksList.findIndex(taskObject => taskObject.title === taskItem.textContent.trim());
+        if (taskIndex > -1) {
+          tasksList.splice(taskIndex, 1); // Remove the task from the array
+          saveTasksToLocalStorage(); // Save the updated tasks list to local storage
+          taskItem.classList.add("closing"); // Add closing animation class
+        }
+      } else if (element.classList.contains("confirm")) {
+        const taskItem = element.closest(".to-do-list-item");
+        taskItem.classList.toggle("task-completed"); // Toggle task completed styling
+      }
+    });
+  });
+
+  tasksContainer.addEventListener('animationend', (event) => {
+    if (event.target.classList.contains(".to-do-list-item.closing")) {
+      event.target.remove(); // Remove the task from the DOM after animation ends
+      updateTaskCount(); // Update the badge counter and Lottie visibility
+    }
+  });
 
   // Load the Lottie animation for tasks when DOM is fully loaded
   lottie.loadAnimation({
@@ -103,16 +220,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Initialize the task count and Lottie visibility
   updateTaskCount();
-});
-$(document).ready(function() {
-  // Handle click event on the calendar icon
-  $(".calendar-icon").click(function() {
-      // Show the modal when the icon is clicked
-      $("#calendar-modal").removeClass("hidden");
 
-      // Initialize the datepicker within the modal
-      $("#calendar-modal .modal-content").datepicker({
-          // Your datepicker options here
-      });
-  });
 });
+
+
