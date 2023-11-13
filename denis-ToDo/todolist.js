@@ -6,16 +6,13 @@ document.addEventListener('DOMContentLoaded', function() {
   const badgeCounter = document.querySelector(".btn-neuro-c");
   const lottieAnimation = document.getElementById('lottie-task-animation');
 
-  let modalLottieInstance = null; // Define a variable to hold the modal lottie instance
-  let tasksList = []; // Initialize tasksList array
-
-  // Function to save tasks to local storage and update task count
+  let modalLottieInstance = null; 
+  let tasksList = []; 
   function saveTasksToLocalStorage() {
     localStorage.setItem('tasks', JSON.stringify(tasksList));
-    updateTaskCount(); // Update count after saving
+    updateTaskCount(); 
   }
 
-  // Function to render tasks
   function renderTasks() {
     tasksContainer.innerHTML = '';
     tasksList.forEach((taskObject, index) => {
@@ -24,7 +21,6 @@ document.addEventListener('DOMContentLoaded', function() {
     updateTaskCount();
   }
 
-  // Function to create and add a task element to the DOM
   function addTaskElementToDOM(task, index) {
     const taskElement = document.createElement("li");
     taskElement.className = 'to-do-list-item d-flex justify-content-around align-items-center';
@@ -41,93 +37,83 @@ document.addEventListener('DOMContentLoaded', function() {
       taskElement.classList.add("open");
     }, 0);
   
-    // Add event listener for blur event on task text
     const taskText = taskElement.querySelector('.task-text');
     taskText.addEventListener('blur', () => {
-      tasksList[index].title = taskText.textContent; // Update task title in tasksList array
-      saveTasksToLocalStorage(); // Save updated tasksList to local storage
+      tasksList[index].title = taskText.textContent;
+      saveTasksToLocalStorage(); 
     });
   }
 
-  // Function to add a new task to the list
+  
   function addTask(title) {
     const newTask = { title: title };
     tasksList.push(newTask);
-    addTaskElementToDOM(newTask.title, tasksList.length -1); // Add the new task to DOM
+    addTaskElementToDOM(newTask.title, tasksList.length -1);
     saveTasksToLocalStorage();
     updateTaskCount();
   }
 
-  // Function to update the visibility of the Lottie animation based on task count
+
   function updateLottieVisibility() {
     lottieAnimation.style.display = badgeCounter.textContent.trim() === '0' ? 'block' : 'none';
   }
 
-  // Function to update the task count display
+ 
   function updateTaskCount() {
     const taskItems = tasksContainer.getElementsByClassName('to-do-list-item');
     badgeCounter.textContent = taskItems.length.toString();
     updateLottieVisibility();
   }
 
-  // Event listener for adding a task through the add button
   addButton.addEventListener("click", (event) => {
-    event.preventDefault(); // Prevent default form submission behavior
+    event.preventDefault();
     const taskValue = searchField.value.trim();
     if (taskValue === "") {
       modal.show();
     } else {
-      addTask(taskValue); // Add the task to the list
-      searchField.value = ""; // Clear the search field
+      addTask(taskValue);
+      searchField.value = "";
     }
   });
 
-  // Event listener for keypress on search field to add task on enter key press
   searchField.addEventListener("keypress", (event) => {
     if (event.key === "Enter") {
-      addButton.click(); // Trigger add button click on enter key press
+      addButton.click();
     }
   });
 
-  // Event listener for task actions like confirm and delete
   tasksContainer.addEventListener("click", (event) => {
-    const taskItem = event.target.closest(".to-do-list-item"); // Find the closest task item
-    if (!taskItem) return; // If no task item is found, exit the function
+    const taskItem = event.target.closest(".to-do-list-item");
+    if (!taskItem) return;
 
-    // Handle delete action
     if (event.target.matches(".delete") || event.target.matches(".delete i")) {
       const taskIndex = tasksList.findIndex(task => task.title === taskItem.querySelector("p").textContent.trim());
       if (taskIndex > -1) {
-        tasksList.splice(taskIndex, 1); // Remove task from the list
-        taskItem.classList.add("closing"); // Add closing animation
+        tasksList.splice(taskIndex, 1);
+        taskItem.classList.add("closing");
       }
-    }
-    // Handle confirm action
-    else if (event.target.matches(".confirm") || event.target.matches(".confirm i")) {
-      taskItem.classList.toggle("task-completed"); // Toggle completion state
+    } else if (event.target.matches(".confirm") || event.target.matches(".confirm i")) {
+      taskItem.classList.toggle("task-completed");
     }
   });
 
-  // Event listener for the end of task deletion animation
   tasksContainer.addEventListener('animationend', (event) => {
     if (event.target.classList.contains("closing")) {
-      event.target.remove(); // Remove task from DOM after animation ends
-      saveTasksToLocalStorage(); // Save the updated list to local storage
-      updateTaskCount(); // Update the task count display
+      event.target.remove();
+      saveTasksToLocalStorage();
+      updateTaskCount();
     }
   });
 
-  // Function to load tasks from local storage on page load
   function loadTasksFromLocalStorage() {
     const storedTasks = localStorage.getItem('tasks');
     if (storedTasks) {
-      tasksList = JSON.parse(storedTasks); // Parse stored tasks into tasksList
-      renderTasks(); // Render tasks after loading
+      tasksList = JSON.parse(storedTasks);
+      renderTasks();
     }
   }
-  loadTasksFromLocalStorage(); // Call loadTasksFromLocalStorage on page load
+  loadTasksFromLocalStorage();
 
-  // Modal animation listeners
   document.getElementById('solutionModal9').addEventListener('show.bs.modal', function() {
     if (!modalLottieInstance) {
       modalLottieInstance = lottie.loadAnimation({
@@ -148,7 +134,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  // Load the Lottie animation for tasks
   lottie.loadAnimation({
     container: lottieAnimation,
     renderer: 'svg',
@@ -157,6 +142,6 @@ document.addEventListener('DOMContentLoaded', function() {
     path: 'https://lottie.host/89e0610a-b1f0-4788-a6d2-6ea7211c7e16/BAMgOQxRC3.json'
   });
 
-  // Initialize the task count and Lottie visibility
+
   updateTaskCount();
 });
