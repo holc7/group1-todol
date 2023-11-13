@@ -1,0 +1,218 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@import "../../scss/icons/font-awesome/css/fontawesome-all.css";
+@import "../../scss/icons/remix-icons/remixicon.css";
+:root {
+  --bs-blue: #02bec9;
+  --bs-indigo: #6610f2;
+  --bs-purple: #05998b;
+  --bs-pink: #d63384;
+  --bs-red: #fb3a3a;
+  --bs-orange: #ff6a5b;
+  --bs-yellow: #fed700;
+  --bs-green: #198754;
+  --bs-teal: #20c997;
+  --bs-cyan: #0dcaf0;
+  --bs-white: #ffffff;
+  --bs-gray: #e9ecef;
+  --bs-gray-dark: #6c757d;
+  --bs-gray-100: #f5f4f4;
+  --bs-gray-200: #fcfcfc;
+  --bs-gray-300: #eeeeee;
+  --bs-gray-400: #d5d5d5;
+  --bs-gray-500: #e1e1e1;
+  --bs-gray-600: #e9ecef;
+  --bs-gray-700: #b9b9c3;
+  --bs-gray-800: #6c757d;
+  --bs-gray-900: #212529;
+  --bs-primary: #7367f0;
+  --bs-secondary: #f8f9fa;
+  --bs-success: #42b983;
+  --bs-info: #39c2fa;
+  --bs-warning: #fed700;
+  --bs-danger: #d63384;
+  --bs-light: #e9ecef;
+  --bs-dark: #313448;
+  --bs-primary-rgb: 115, 103, 240;
+  --bs-secondary-rgb: 248, 249, 250;
+  --bs-success-rgb: 66, 185, 131;
+  --bs-info-rgb: 57, 194, 250;
+  --bs-warning-rgb: 254, 215, 0;
+  --bs-danger-rgb: 214, 51, 132;
+  --bs-light-rgb: 233, 236, 239;
+  --bs-dark-rgb: 49, 52, 72;
+  --bs-white-rgb: 255, 255, 255;
+  --bs-black-rgb: 0, 0, 0;
+  --bs-body-color-rgb: 68, 71, 106;
+  --bs-body-bg-rgb: 230, 231, 238;
+  --bs-font-sans-serif:
+  "Roboto", sans-serif;
+  --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
+  "Liberation Mono", "Courier New", monospace;
+  --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+  --bs-body-font-family: var(
+  --bs-font-sans-serif);
+  --bs-body-font-size: 1rem;
+  --bs-body-font-weight: 400;
+  --bs-body-line-height: 1.5;
+  --bs-body-color: #44476a;
+  --bs-body-bg: #e6e7ee;
+}
+
+
+.neuromorphic-container {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    --bs-gutter-x: 24px;
+    --bs-gutter-y: 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: transparent;
+    background-clip: border-box;
+    box-shadow: 3px 3px 6px #b8b9be, -3px -3px 6px #fff;
+    border: 1px solid #d1d9e6;
+    border-radius: 15px;
+    text-align: center;
+
+}
+
+.neuromorphic-btn-e {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    --bs-gutter-x: 24px;
+    --bs-gutter-y: 0;
+    word-wrap: break-word;
+    margin: 0;
+    box-sizing: border-box;
+    display: inline;
+    font-weight: 500;
+    line-height: 1.5;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    background-color: #6BC2F9;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    margin-top: 1rem !important;
+    box-shadow: 3px 3px 6px #b8b9be, -3px -3px 6px #fff;
+    border: 1px solid #d1d9e6;
+    border-radius: 6px;
+    transition: all 0.4s ease-in-out;
+
+  }
+  
+  .neuromorphic-btn-e:focus, .neuromorphic-btn-e:hover {
+    box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5), 
+                inset 4px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .neuromorphic-btn-s {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    --bs-gutter-x: 24px;
+    --bs-gutter-y: 0;
+    word-wrap: break-word;
+    margin: 0;
+    box-sizing: border-box;
+    display: inline-block;
+    font-weight: 500;
+    line-height: 1.5;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    margin-top: 1rem !important;
+    box-shadow: inset 3px 3px 6px #b8b9be, inset -3px -3px 6px #fff; /* Changed to inset to appear pressed */
+    border: 1px solid #d1d9e6;
+    border-radius: 6px;
+    transition: all 0.4s ease-in-out;
+}
+  .neuromorphic-btn-s:focus, .neuromorphic-btn-s:hover {
+    box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5), 
+                inset 4px 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #42B99F;
+  }
+  
+  
+  .neuromorphic-btn-c {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  list-style: none;
+  margin: 0;
+  box-sizing: border-box;
+  display: block;
+  text-decoration: none;
+  padding-right: 1rem !important;
+  padding-left: 1rem !important;
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+  box-shadow: 3px 3px 6px #b8b9be, -3px -3px 6px #fff;
+  border: 1px solid #d1d9e6;
+  border-radius: 6px;
+  transition: all 0.4s ease-in-out;
+  color: #44476a !important;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.neuromorphic-btn-c:focus, .neuromorphic-btn-c:hover {
+    box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5), 
+                inset 4px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+.modal-content {
+    background-color:#E6E7EE;
+  }
+
+  .btn-primary {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    list-style: none;
+    margin: 0;
+    box-sizing: border-box;
+    display: block;
+    text-decoration: none;
+    padding-right: 1rem !important;
+    padding-left: 1rem !important;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+    box-shadow: 3px 3px 6px #b8b9be, -3px -3px 6px #fff;
+    border: 1px solid #d1d9e6;
+    border-radius: 6px;
+    transition: all 0.4s ease-in-out;
+    color: #44476a !important;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 500;
+    background-color: #6BC2F9;
+  }
+
+  .btn-primary:focus, .btn-primary:hover {
+    box-shadow: 3px 3px 6px #b8b9be, -3px -3px 6px #fff;
+    border: 1px solid #d1d9e6;
+    border-radius: 6px;
+    transition: all 0.4s ease-in-out;
+    background-color: #6BC2F9; /* Set your desired hover color if different */
+    box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.5), 
+                inset 4px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* .neuromorphic-container h6{
+    font-size: 0.5rem;
+
+  } */
