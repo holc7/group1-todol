@@ -454,8 +454,9 @@
 }
 
 
-
-
+.nav-link {
+  color: white;
+}
 
 .fa-github {
   font-size: 20px;
