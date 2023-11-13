@@ -1,60 +1,154 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /* BORA STYLE */
 
-
-
-
-
-
-
 /* BORA STYLE */
 
+/* DARKO STYLE */
+
+.darko-project{
+  padding: 20px;
+}
+
+.darko-main{
+  width: 60%;
+  margin: auto;
+  min-height: 95vh;
+  border:1px solid #007bff;
+  border-radius: 6px;
+  padding: 100px 20px 20px 20px;
+}
+
+.darko-main form{
+  background-attachment: grey;
+  padding: 20px;
+}
+
+.darko-main .form-wrapper{
+width: 80%;
+position: relative;
+padding: 20px;
+margin: auto;
+}
+.darko-main h1{
+  text-align: center;
+  color:  #007bff;
+
+}
+.darko-main input[type='text']{
+  width: 100%;
+  height: 65px;
+  padding: 20px;
+  font-size: 18px;
+  border-radius: 6px;
+  border: 1px solid  #007bff;
+}
+.darko-main .form-wrapper button{
+  position: absolute;
+  right: 30px;
+  top: 35px;
+}
 
 
+.darko-main button{
+  padding: 10px 20px;
+  background-color: #007bff;
+  border: 1px solid #007bff;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
 
+.darko-main li{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid #007bff;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.task-value{
+  flex-grow: 2;
+  text-align: center;
+}
+
+.delete-btn,
+.update-btn,
+.done-btn{
+  margin-left: 10px;
+}
+
+
+@media (max-width: 992px) {
+  body {
+    padding: 0;
+  }
+  .darko-main{
+      width: 90%;
+      padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  body {
+    padding: 0;
+  }
+  .darko-main {
+      width: 100%;
+      padding: 60px 10px 10px 10px;
+  }
+  .darko-main button {
+      padding: 5px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+  }
+  .darko-main form {
+      padding: 0px;
+  }
+  .darko-main .form-wrapper {
+      width: 100%;
+      padding: 0px;
+      margin: 50px 0;
+  }
+  .darko-main .form-wrapper button {
+      position: absolute;
+      right: 10px;
+      top: 20px;
+  }
+  .darko-main li {
+      padding: 10px;
+      border: 1px solid #007bff;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      height: 70px;
+  }
+  .darko-main input[type='text'] {
+      width: 100%;
+      height: 65px;
+      padding: 10px;
+      font-size: 13px;
+      border-radius: 6px;
+      border: 1px solid #007b
+}
+.darko-main .todo-list input[type='text'] {
+  height: 40px;
+}
+}
 
 
 /* DARKO STYLE */
 
-
-
-
-
-
-/* DARKO STYLE */
-
-
-
-
-
-
 /* AADIL STYLE */
 
-
-
-
-
-
-
 /* AADIL STYLE */
-
-
-
-
-
-
 
 /* DENIS STYLE */
-
-
-
-
-
-
 
 /* DENIS STYLE */
