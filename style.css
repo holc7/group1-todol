@@ -104,6 +104,10 @@
 .completed input[type="text"] {
     text-decoration: line-through;
 }
+
+#taskForgeCard {
+    letter-spacing: 0.5rem;
+}
 /* AADIL STYLE */
 
 
